@@ -2,22 +2,6 @@
 	path = bioformats
 	url = https://github.com/openmicroscopy/bioformats.git
 	branch = develop
-[submodule "bio-formats-bundles"]
-	path = bio-formats-bundles
-	url = https://github.com/ome/bio-formats-bundles.git
-	branch = master
-[submodule "bio-formats-test"]
-	path = bio-formats-test
-	url = https://github.com/ome/bio-formats-test.git
-	branch = master
-[submodule "bio-formats-matlab"]
-	path = bio-formats-matlab
-	url = https://github.com/ome/bio-formats-matlab.git
-	branch = master
-[submodule "bio-formats-imagej"]
-	path = bio-formats-imagej
-	url = https://github.com/ome/bio-formats-imagej.git
-	branch = master
 [submodule "bio-formats-documentation"]
 	path = bio-formats-documentation
 	url = https://github.com/ome/bio-formats-documentation.git
