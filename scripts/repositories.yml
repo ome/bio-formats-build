@@ -1,4 +1,4 @@
-base-branch: master
+base-branch: east
 
 submodules:
   ome-common-java:
