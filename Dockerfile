@@ -1,4 +1,4 @@
-ARG BUILD_IMAGE=openjdk:8
+ARG BUILD_IMAGE=openjdk:11
 
 # Build image
 FROM ${BUILD_IMAGE}
