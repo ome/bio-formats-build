@@ -42,3 +42,7 @@
 	path = bio-formats-examples
 	url = https://github.com/ome/bio-formats-examples.git
 	branch = master
+[submodule "ZarrReader"]
+	path = ZarrReader
+	url = https://github.com/ome/ZarrReader.git
+	branch = main
