@@ -27,7 +27,6 @@
     <module>bioformats</module>
     <module>bio-formats-examples</module>
     <module>bio-formats-documentation</module>
-    <module>ZarrReader</module>
   </modules>
 
   <build>

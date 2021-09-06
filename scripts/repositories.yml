@@ -36,6 +36,3 @@ submodules:
     
   ome-stubs:
     base-branch: master
-    
-  ZarrReader:
-    base-branch: main
