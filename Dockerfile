@@ -21,7 +21,7 @@ RUN python3 -m venv /bio-formats-build/venv
 ENV PATH="/bio-formats-build/venv/bin:$PATH"
 RUN pip install -r ome-model/requirements.txt
 
-RUN mvn clean install -DskipSphinxTests
+RUN mvn clean install -DskipTests
 
 WORKDIR /bio-formats-build/bioformats
 RUN ant jars tools
