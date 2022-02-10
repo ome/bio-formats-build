@@ -1,4 +1,4 @@
-ARG BUILD_IMAGE=openjdk:8
+ARG BUILD_IMAGE=openjdk:8u322-jdk
 
 # Build image
 FROM ${BUILD_IMAGE}
@@ -20,6 +20,7 @@ RUN git submodule update --init
 RUN python3 -m venv /bio-formats-build/venv
 ENV PATH="/bio-formats-build/venv/bin:$PATH"
 RUN pip install -r ome-model/requirements.txt
+RUN sphinx-build --version
 
 RUN mvn clean install -DskipSphinxTests -Dsurefire.useSystemClassLoader=false
 
