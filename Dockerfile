@@ -22,7 +22,7 @@ ENV PATH="/bio-formats-build/venv/bin:$PATH"
 RUN pip install -r ome-model/requirements.txt
 RUN sphinx-build --version
 
-RUN mvn clean install -DskipSphinxTests -Dsurefire.useSystemClassLoader=false
+RUN mvn clean install -DskipSphinxTests
 
 WORKDIR /bio-formats-build/bioformats
 RUN ant jars tools
