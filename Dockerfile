@@ -20,6 +20,15 @@ RUN apt-get -q update && apt-get -qy install \
     python3.11-venv \
     && update-ca-certificates
 
+RUN keytool -delete -cacerts -storepass changeit \
+    -alias "cn=emsign_ecc_root_ca_-_g3,o=emudhra_technologies_limited,ou=emsign_pki,c=in" \
+    && echo "=== Verify emSign G3 is absent ===" \
+    && if keytool -list -cacerts -storepass changeit | grep -qi 'emsign_ecc_root_ca_-_g3'; then \
+         echo "ERROR: emSign ECC Root CA - G3 remains"; exit 1; \
+       else \
+         echo "PASS: emSign ECC Root CA - G3 removed"; \
+       fi
+
 RUN id 1000 || useradd -u 1000 -ms /bin/bash build
 COPY --chown=1000:1000 . /bio-formats-build
 
@@ -45,6 +54,8 @@ RUN pip install -r ome-model/requirements.txt
 RUN mvn clean install -DskipSphinxTests -Dmaven.javadoc.skip=true
 
 WORKDIR /bio-formats-build/bioformats
+
+RUN java -version && javac -version && mvn -version
 
 RUN ant jars tools
 
