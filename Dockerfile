@@ -1,4 +1,4 @@
-ARG BUILD_IMAGE=eclipse-temurin:8-jdk-jammy
+ARG BUILD_IMAGE=eclipse-temurin:11-jdk-jammy
 # Build image
 FROM ${BUILD_IMAGE}
 LABEL maintainer="ome-devel@lists.openmicroscopy.org.uk"
