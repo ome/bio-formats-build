@@ -20,13 +20,19 @@ RUN apt-get -q update && apt-get -qy install \
     python3.11-venv \
     && update-ca-certificates
 
-RUN keytool -delete -cacerts -storepass changeit \
-    -alias "cn=emsign_ecc_root_ca_-_g3,o=emudhra_technologies_limited,ou=emsign_pki,c=in" \
+
+RUN echo "=== Remove emSign ECC Root CA - G3 if present ===" \
+    && if keytool -list -cacerts -storepass changeit | grep -qi 'emsign_ecc_root_ca_-_g3'; then \
+         keytool -delete -cacerts -storepass changeit \
+           -alias "cn=emsign_ecc_root_ca_-_g3,o=emudhra_technologies_limited,ou=emsign_pki,c=in"; \
+       else \
+         echo "INFO: emSign ECC Root CA - G3 is already absent"; \
+       fi \
     && echo "=== Verify emSign G3 is absent ===" \
     && if keytool -list -cacerts -storepass changeit | grep -qi 'emsign_ecc_root_ca_-_g3'; then \
          echo "ERROR: emSign ECC Root CA - G3 remains"; exit 1; \
        else \
-         echo "PASS: emSign ECC Root CA - G3 removed"; \
+         echo "PASS: emSign ECC Root CA - G3 absent"; \
        fi
 
 RUN id 1000 || useradd -u 1000 -ms /bin/bash build
